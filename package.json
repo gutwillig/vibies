@@ -1,0 +1,11 @@
+{
+  "name": "vibies",
+  "version": "1.0.0",
+  "description": "The Vibies - An awards show for AI-native software",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": ["awards", "ai", "software"],
+  "author": "",
+  "license": "MIT"
+}

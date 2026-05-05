@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Vibies — Inaugural 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Fraunces:ital,opsz,wght@1,9..144,300;1,9..144,400&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --cream: #F4EEDF;
+    --cream-2: #EAE2CD;
+    --cream-3: #DED4BB;
+    --ink: #1A1714;
+    --ink-soft: rgba(26, 23, 20, 0.65);
+    --ink-faint: rgba(26, 23, 20, 0.4);
+    --rule: rgba(26, 23, 20, 0.18);
+    --terracotta: #C2410C;
+    --terracotta-soft: #E8825D;
+    --moss: #2D4A35;
+    --shell: #F8F4E9;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--terracotta); color: var(--cream); }
+
+  .v-mark {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+  }
+
+  .eyebrow {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .eyebrow.muted { color: var(--ink-soft); }
+
+  /* ============ ANNOUNCEMENT ============ */
+  .announce {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 11px 32px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    text-align: center;
+    letter-spacing: 0.01em;
+  }
+  .announce a {
+    color: var(--cream);
+    text-decoration: none;
+    border-bottom: 1px solid var(--cream);
+    padding-bottom: 1px;
+  }
+  .announce .marker { color: var(--terracotta-soft); margin: 0 10px; }
+
+  /* ============ NAV ============ */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 40px;
+    border-bottom: 1px solid var(--rule);
+  }
+  nav .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 22px;
+    letter-spacing: -0.005em;
+    text-transform: uppercase;
+  }
+  nav .brand .v-logo {
+    width: 22px;
+    height: 22px;
+    color: var(--terracotta);
+  }
+  nav .brand-sub {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-left: 14px;
+    padding-left: 14px;
+    border-left: 1px solid var(--rule);
+  }
+  nav .brand-cluster { display: flex; align-items: center; }
+  nav .links {
+    display: flex;
+    gap: 36px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  nav .links a {
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  nav .links a:hover { color: var(--terracotta); }
+  nav .links a.cta {
+    color: var(--cream);
+    background: var(--ink);
+    padding: 10px 18px;
+    border-radius: 999px;
+    transition: background 0.2s ease;
+  }
+  nav .links a.cta:hover { background: var(--terracotta); color: var(--cream); }
+
+  /* ============ HERO ============ */
+  .hero {
+    padding: 120px 40px 80px;
+    position: relative;
+  }
+  .hero__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+  .hero__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .hero__top .meta {
+    color: var(--ink-soft);
+  }
+  .hero__top .meta strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .wordmark {
+    font-family: 'Archivo Black', sans-serif;
+    line-height: 0.88;
+    text-transform: uppercase;
+    letter-spacing: -0.015em;
+  }
+  .wordmark .the {
+    display: block;
+    font-size: clamp(40px, 5.5vw, 88px);
+    color: var(--ink);
+    margin-bottom: -0.02em;
+    opacity: 0;
+    transform: translateY(24px);
+    animation: line-up 0.7s cubic-bezier(0.2, 0.85, 0.3, 1) 0.15s forwards;
+  }
+  .wordmark .vibies {
+    display: block;
+    font-size: clamp(120px, 22vw, 360px);
+    color: var(--ink);
+    line-height: 0.88;
+    letter-spacing: -0.02em;
+  }
+  .wordmark .vibies .letter {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(60px) scaleY(0.85);
+    transform-origin: bottom center;
+    animation: letter-up 0.7s cubic-bezier(0.2, 0.85, 0.3, 1) forwards;
+    will-change: transform, opacity;
+  }
+  .wordmark .vibies .letter:nth-child(1) { animation-delay: 0.32s; }
+  .wordmark .vibies .letter:nth-child(2) { animation-delay: 0.42s; }
+  .wordmark .vibies .letter:nth-child(3) { animation-delay: 0.52s; }
+  .wordmark .vibies .letter:nth-child(4) { animation-delay: 0.62s; }
+  .wordmark .vibies .letter:nth-child(5) { animation-delay: 0.72s; }
+  .wordmark .vibies .letter:nth-child(6) { animation-delay: 0.82s; }
+  .wordmark .vibies .v-letter {
+    color: var(--ink);
+    animation:
+      letter-up 0.7s cubic-bezier(0.2, 0.85, 0.3, 1) 0.32s forwards,
+      v-reveal 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.7s forwards;
+  }
+  .wordmark .twenty {
+    display: block;
+    font-size: clamp(40px, 5.5vw, 88px);
+    color: var(--ink-soft);
+    margin-top: -0.02em;
+    opacity: 0;
+    transform: translateY(24px);
+    animation: line-up 0.7s cubic-bezier(0.2, 0.85, 0.3, 1) 1.4s forwards;
+  }
+
+  @keyframes line-up {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes letter-up {
+    to { opacity: 1; transform: translateY(0) scaleY(1); }
+  }
+  @keyframes v-reveal {
+    0%   { color: var(--ink); transform: translateY(0) scaleY(1) scale(1); }
+    50%  { color: var(--terracotta); transform: translateY(0) scaleY(1) scale(1.08); }
+    100% { color: var(--terracotta); transform: translateY(0) scaleY(1) scale(1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .wordmark .the,
+    .wordmark .twenty,
+    .wordmark .vibies .letter,
+    .wordmark .vibies .v-letter {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    .wordmark .vibies .v-letter { color: var(--terracotta); }
+  }
+
+  .hero__bottom {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 64px;
+    align-items: end;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+  }
+  .hero__lede {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(22px, 2.4vw, 32px);
+    line-height: 1.3;
+    color: var(--ink);
+    max-width: 580px;
+  }
+  .hero__lede em {
+    color: var(--terracotta);
+    font-weight: 400;
+  }
+  .hero__date {
+    text-align: right;
+  }
+  .hero__date .day {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(64px, 7.5vw, 112px);
+    line-height: 0.9;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+  .hero__date .day .num {
+    color: var(--terracotta);
+  }
+  .hero__date .sub {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 12px;
+    color: var(--ink-soft);
+  }
+
+  .ctas {
+    display: flex;
+    gap: 14px;
+    margin-top: 8px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 32px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 999px;
+    transition: transform 0.18s ease, background 0.2s ease, color 0.2s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn--primary {
+    background: var(--ink);
+    color: var(--cream);
+  }
+  .btn--primary:hover { background: var(--terracotta); }
+  .btn--ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+  }
+  .btn--ghost:hover { background: var(--ink); color: var(--cream); }
+  .btn .arrow {
+    font-weight: 600;
+    transition: transform 0.2s ease;
+  }
+  .btn:hover .arrow { transform: translateX(3px); }
+
+  /* ============ THESIS ============ */
+  .thesis {
+    background: var(--shell);
+    padding: 140px 40px;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .thesis__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+  }
+  .thesis__label {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .thesis__label .v-tag {
+    width: 56px;
+    height: 56px;
+    color: var(--terracotta);
+  }
+  .thesis__statement {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(36px, 4.5vw, 68px);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 56px;
+    text-transform: uppercase;
+  }
+  .thesis__statement em {
+    font-style: normal;
+    color: var(--terracotta);
+  }
+  .thesis__pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .pillar {
+    padding-top: 28px;
+    border-top: 3px solid var(--ink);
+  }
+  .pillar__num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 22px;
+    color: var(--terracotta);
+    margin-bottom: 14px;
+    line-height: 1;
+    letter-spacing: -0.005em;
+  }
+  .pillar__title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 26px;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    margin-bottom: 14px;
+    color: var(--ink);
+    text-transform: uppercase;
+  }
+  .pillar__body {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  /* ============ SECTION ============ */
+  .section {
+    padding: 140px 40px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .section__head {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    margin-bottom: 80px;
+    align-items: end;
+  }
+  .section__title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(64px, 8.5vw, 152px);
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    text-transform: uppercase;
+  }
+  .section__title em {
+    font-style: normal;
+    color: var(--terracotta);
+  }
+  .section__sub {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 400;
+    font-size: clamp(16px, 1.4vw, 19px);
+    color: var(--ink-soft);
+    line-height: 1.55;
+    max-width: 480px;
+  }
+
+  /* ============ CATEGORIES ============ */
+  .cat-list { border-top: 3px solid var(--ink); }
+  .cat-item {
+    display: grid;
+    grid-template-columns: 70px 1fr auto 60px;
+    align-items: center;
+    gap: 32px;
+    padding: 36px 8px;
+    border-bottom: 1px solid var(--rule);
+    cursor: pointer;
+    transition: padding 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+  }
+  .cat-item:hover { padding-left: 24px; }
+  .cat-item__num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 28px;
+    color: var(--ink-faint);
+    line-height: 1;
+    letter-spacing: -0.005em;
+  }
+  .cat-item:hover .cat-item__num { color: var(--terracotta); }
+  .cat-item__name {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(28px, 3.4vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+  }
+  .cat-item:hover .cat-item__name { color: var(--terracotta); }
+  .cat-item__desc {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 14px;
+    color: var(--ink-soft);
+    max-width: 360px;
+    line-height: 1.5;
+  }
+  .cat-item__arrow {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 28px;
+    color: var(--ink-faint);
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+  .cat-item:hover .cat-item__arrow {
+    color: var(--terracotta);
+    transform: translateX(8px);
+  }
+
+  .cat-item--feature {
+    background: var(--moss);
+    color: var(--cream);
+    margin: 0 -8px 0;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 48px;
+  }
+  .cat-item--feature:hover {
+    padding-left: 48px;
+  }
+  .cat-item--feature .cat-item__num { color: var(--terracotta-soft); }
+  .cat-item--feature:hover .cat-item__num { color: var(--terracotta-soft); }
+  .cat-item--feature .cat-item__name { color: var(--cream); }
+  .cat-item--feature:hover .cat-item__name { color: var(--terracotta-soft); }
+  .cat-item--feature .cat-item__desc { color: rgba(244, 238, 223, 0.7); }
+  .cat-item--feature .cat-item__arrow { color: rgba(244, 238, 223, 0.5); }
+  .cat-item--feature:hover .cat-item__arrow { color: var(--terracotta-soft); }
+  .cat-item--feature::before {
+    content: 'Headline award';
+    position: absolute;
+    top: 14px;
+    left: 32px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--terracotta-soft);
+  }
+
+  .cat-item--sloppy {
+    background: var(--terracotta);
+    color: var(--cream);
+    margin: 0 -8px 0;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 48px;
+  }
+  .cat-item--sloppy:hover { padding-left: 48px; }
+  .cat-item--sloppy .cat-item__num { color: rgba(244, 238, 223, 0.55); }
+  .cat-item--sloppy:hover .cat-item__num { color: var(--ink); }
+  .cat-item--sloppy .cat-item__name { color: var(--cream); }
+  .cat-item--sloppy:hover .cat-item__name { color: var(--ink); }
+  .cat-item--sloppy .cat-item__desc { color: rgba(244, 238, 223, 0.78); }
+  .cat-item--sloppy .cat-item__arrow { color: rgba(244, 238, 223, 0.55); }
+  .cat-item--sloppy:hover .cat-item__arrow { color: var(--ink); }
+  .cat-item--sloppy::before {
+    content: 'Signature award';
+    position: absolute;
+    top: 14px;
+    left: 32px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(244, 238, 223, 0.75);
+  }
+
+  /* ============ FIRST WORDS ============ */
+  .first-words {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 140px 40px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .first-words__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .first-words__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 80px;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .first-words__title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(56px, 7.5vw, 120px);
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    text-transform: uppercase;
+  }
+  .first-words__title em {
+    font-style: normal;
+    color: var(--terracotta-soft);
+  }
+  .first-words__sub {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 16px;
+    color: rgba(244, 238, 223, 0.7);
+    max-width: 380px;
+    line-height: 1.55;
+  }
+  .quotes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px;
+  }
+  .quote {
+    padding: 32px 0;
+    border-top: 1px solid rgba(244, 238, 223, 0.2);
+  }
+  .quote__text {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(24px, 2.4vw, 32px);
+    line-height: 1.2;
+    margin-bottom: 18px;
+    color: var(--cream);
+    letter-spacing: -0.01em;
+  }
+  .quote__attrib {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 13px;
+    color: rgba(244, 238, 223, 0.6);
+    letter-spacing: 0.04em;
+  }
+  .quote__attrib strong {
+    color: var(--terracotta-soft);
+    font-weight: 500;
+  }
+
+  /* ============ JUDGES ============ */
+  .judges {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .judge {
+    aspect-ratio: 4 / 5;
+    background: var(--cream-2);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s ease;
+    border-radius: 8px;
+  }
+  .judge:nth-child(odd) { border-radius: 200px 200px 8px 8px; }
+  .judge:hover { background: var(--cream-3); }
+  .judge__num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 20px;
+    color: var(--terracotta);
+    line-height: 1;
+    letter-spacing: -0.005em;
+  }
+  .judge__body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .judge__name {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 26px;
+    line-height: 1;
+    color: var(--ink-faint);
+    letter-spacing: -0.015em;
+    text-transform: uppercase;
+  }
+  .judge__title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  /* ============ TIMELINE ============ */
+  .timeline-track {
+    border-top: 3px solid var(--ink);
+  }
+  .milestone {
+    display: grid;
+    grid-template-columns: 220px 1fr 220px;
+    align-items: center;
+    gap: 48px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--rule);
+    transition: padding 0.3s ease, background 0.3s ease;
+  }
+  .milestone:hover { padding-left: 16px; padding-right: 16px; background: var(--shell); }
+  .milestone__date {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 36px;
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+    text-transform: uppercase;
+  }
+  .milestone__date .num {
+    color: var(--terracotta);
+  }
+  .milestone__title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(22px, 2.4vw, 32px);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    text-transform: uppercase;
+  }
+  .milestone__desc {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 320px;
+    text-align: right;
+  }
+  .milestone--final {
+    background: var(--terracotta);
+    color: var(--cream);
+    border-bottom-color: transparent;
+  }
+  .milestone--final:hover { background: var(--terracotta); padding-left: 16px; padding-right: 16px; }
+  .milestone--final .milestone__date,
+  .milestone--final .milestone__title { color: var(--cream); }
+  .milestone--final .milestone__date .num { color: var(--cream); }
+  .milestone--final .milestone__desc { color: var(--cream); opacity: 0.85; }
+
+  /* ============ SPONSORS ============ */
+  .presenting {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    align-items: center;
+    padding: 56px 0;
+    border-top: 3px solid var(--ink);
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 48px;
+  }
+  .presenting__label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .presenting__label .lab {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+  }
+  .presenting__label .meta {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    margin-top: 8px;
+  }
+  .presenting__logo {
+    display: inline-block;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(40px, 6vw, 84px);
+    line-height: 1;
+    letter-spacing: -0.015em;
+    color: var(--cream);
+    background: var(--terracotta);
+    padding: 18px 32px 14px;
+    border-radius: 6px;
+    text-transform: uppercase;
+  }
+  .sponsor-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .sponsor-slot {
+    aspect-ratio: 5 / 2;
+    border: 1px solid var(--rule);
+    background: var(--shell);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--ink-soft);
+    border-radius: 8px;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .sponsor-slot:hover { border-color: var(--terracotta); color: var(--terracotta); }
+
+  /* ============ FINAL CTA ============ */
+  .final-cta {
+    background: var(--terracotta);
+    color: var(--cream);
+    padding: 160px 40px;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .final-cta__inner { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; }
+  .final-cta__title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(72px, 11vw, 184px);
+    line-height: 0.9;
+    letter-spacing: -0.025em;
+    margin-bottom: 32px;
+    text-transform: uppercase;
+  }
+  .final-cta__title .accent {
+    display: block;
+    color: var(--ink);
+  }
+  .final-cta__sub {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 500;
+    font-size: clamp(18px, 1.8vw, 22px);
+    margin-bottom: 56px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.4;
+    opacity: 0.95;
+  }
+  .final-cta .btn--primary {
+    background: var(--ink);
+    color: var(--cream);
+  }
+  .final-cta .btn--primary:hover {
+    background: var(--cream);
+    color: var(--terracotta);
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--cream);
+    color: var(--ink);
+    padding: 72px 40px 40px;
+    border-top: 1px solid var(--rule);
+  }
+  .footer-inner { max-width: 1280px; margin: 0 auto; }
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 32px;
+  }
+  .footer-brand {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 64px;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+  .footer-brand .v-letter { color: var(--terracotta); }
+  .footer-meta {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 13px;
+    line-height: 1.7;
+    text-align: right;
+    color: var(--ink-soft);
+  }
+  .footer-meta strong { color: var(--ink); font-weight: 500; }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 12px;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px) {
+    nav { padding: 20px 24px; }
+    nav .links { gap: 16px; font-size: 13px; }
+    nav .links a:not(.cta) { display: none; }
+    nav .brand-sub { display: none; }
+    .hero { padding: 80px 24px 60px; }
+    .hero__bottom { grid-template-columns: 1fr; gap: 32px; }
+    .hero__date { text-align: left; }
+    .thesis, .section, .first-words, .final-cta { padding: 80px 24px; }
+    .thesis__inner, .section__head { grid-template-columns: 1fr; gap: 32px; }
+    .thesis__pillars { grid-template-columns: 1fr; }
+    .cat-item { grid-template-columns: 50px 1fr; gap: 16px; padding: 24px 8px; }
+    .cat-item__desc, .cat-item__arrow { display: none; }
+    .quotes { grid-template-columns: 1fr; gap: 24px; }
+    .judges { grid-template-columns: repeat(2, 1fr); }
+    .milestone { grid-template-columns: 1fr; gap: 12px; padding: 24px 0; }
+    .milestone__desc { text-align: left; }
+    .presenting { grid-template-columns: 1fr; gap: 32px; padding: 40px 0; }
+    .sponsor-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ============ INTRO REVEAL ============ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: reveal 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+  .reveal--1 { animation-delay: 0.05s; }
+  .reveal--2 { animation-delay: 0.2s; }
+  .reveal--3 { animation-delay: 2.1s; }
+  .reveal--4 { animation-delay: 2.3s; }
+  @keyframes reveal {
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position: absolute;">
+  <defs>
+    <symbol id="v-mark" viewBox="0 0 32 32">
+      <path d="M 4 4 L 16 28 L 28 4" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle cx="16" cy="14" r="2.5" fill="currentColor"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ANNOUNCEMENT -->
+<div class="announce">
+  Inaugural edition <span class="marker">◆</span> Submissions open May 25 <span class="marker">◆</span> Live broadcast September 10, 2026
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="brand-cluster">
+    <div class="brand">
+      <svg class="v-logo"><use href="#v-mark"/></svg>
+      <span>The Vibies</span>
+    </div>
+    <div class="brand-sub">Inaugural — '26</div>
+  </div>
+  <div class="links">
+    <a href="#categories">Categories</a>
+    <a href="#judges">Council</a>
+    <a href="#timeline">Schedule</a>
+    <a href="#sponsors">Patrons</a>
+    <a href="#submit" class="cta">Submit →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__inner">
+    <div class="hero__top reveal reveal--1">
+      <div class="eyebrow muted">An awards show for AI-native software</div>
+      <div class="meta eyebrow muted">Edition 001 <strong>·</strong> 2026</div>
+    </div>
+
+    <h1 class="wordmark">
+      <span class="the">The</span>
+      <span class="vibies"><span class="letter v-letter">V</span><span class="letter">I</span><span class="letter">B</span><span class="letter">I</span><span class="letter">E</span><span class="letter">S</span></span>
+      <span class="twenty">Twenty Twenty-Six</span>
+    </h1>
+
+    <div class="hero__bottom reveal reveal--3">
+      <div>
+        <p class="hero__lede">
+          The first awards show for the AI-native software <em>actually shipping</em> to real users in 2026 — judged by builders, voted by the community.
+        </p>
+        <div class="ctas">
+          <a href="#submit" class="btn btn--primary">
+            Submit your work <span class="arrow">→</span>
+          </a>
+          <a href="#categories" class="btn btn--ghost">
+            See the categories <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="hero__date">
+        <div class="day">Sep <span class="num">10</span></div>
+        <div class="sub">Live broadcast worldwide</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THESIS -->
+<section class="thesis">
+  <div class="thesis__inner">
+    <div class="thesis__label">
+      <svg class="v-tag"><use href="#v-mark"/></svg>
+      <div class="eyebrow">The mission</div>
+    </div>
+    <div>
+      <h2 class="thesis__statement">
+        Six categories. One night. Every winner revealed live, with no <em>embargoed press</em> and no advance reveals — if you want to know who took home a Vibie, you tune in.
+      </h2>
+      <div class="thesis__pillars">
+        <div class="pillar">
+          <div class="pillar__num">01</div>
+          <h3 class="pillar__title">In production</h3>
+          <p class="pillar__body">Submissions point to real software with real users. Demos, prototypes, and unreleased projects do not qualify for consideration.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar__num">02</div>
+          <h3 class="pillar__title">The Council</h3>
+          <p class="pillar__body">Founders, operators, and product leaders shortlist three finalists per category through a structured judging rubric.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar__num">03</div>
+          <h3 class="pillar__title">The broadcast</h3>
+          <p class="pillar__body">Winners are revealed only on the night. Tune into the livestream live, or read the recap the morning after.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="section" id="categories">
+  <div class="section__inner">
+    <div class="section__head">
+      <h2 class="section__title">The <em>categories</em></h2>
+      <p class="section__sub">Six awards. The Council shortlists three finalists per category. The community votes the winner. Everything revealed live on September 10.</p>
+    </div>
+
+    <div class="cat-list">
+      <a class="cat-item cat-item--feature" href="#">
+        <div class="cat-item__num">01</div>
+        <div class="cat-item__name">Vibie of the Year</div>
+        <div class="cat-item__desc">The single best AI-native product of 2026.</div>
+        <div class="cat-item__arrow">→</div>
+      </a>
+      <a class="cat-item" href="#">
+        <div class="cat-item__num">02</div>
+        <div class="cat-item__name">Best AI Agent in Production</div>
+        <div class="cat-item__desc">Agentic systems doing real work for real users at scale.</div>
+        <div class="cat-item__arrow">→</div>
+      </a>
+      <a class="cat-item" href="#">
+        <div class="cat-item__num">03</div>
+        <div class="cat-item__name">Best Solo Build</div>
+        <div class="cat-item__desc">One person, real users, real outcomes — the indie hit of the year.</div>
+        <div class="cat-item__arrow">→</div>
+      </a>
+      <a class="cat-item" href="#">
+        <div class="cat-item__num">04</div>
+        <div class="cat-item__name">Best Enterprise Deployment</div>
+        <div class="cat-item__desc">AI shipped at scale inside a Fortune 1000 organization.</div>
+        <div class="cat-item__arrow">→</div>
+      </a>
+      <a class="cat-item cat-item--sloppy" href="#">
+        <div class="cat-item__num">05</div>
+        <div class="cat-item__name">The Sloppy</div>
+        <div class="cat-item__desc">A respectful tip of the hat to the most ambitious AI swing of 2026 that didn't quite land.</div>
+        <div class="cat-item__arrow">→</div>
+      </a>
+      <a class="cat-item" href="#">
+        <div class="cat-item__num">06</div>
+        <div class="cat-item__name">The People's Vibie</div>
+        <div class="cat-item__desc">Open vote across every submission — the product the internet couldn't stop talking about.</div>
+        <div class="cat-item__arrow">→</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FIRST WORDS -->
+<section class="first-words">
+  <div class="first-words__inner">
+    <div class="first-words__head">
+      <h2 class="first-words__title">First <em>Words</em></h2>
+      <p class="first-words__sub">Vibie winners are asked to give a five-word acceptance — a tradition borrowed with affection from our predecessors. Some early submissions from the Council, off the record.</p>
+    </div>
+    <div class="quotes">
+      <div class="quote">
+        <p class="quote__text">"My agents finally stopped hallucinating."</p>
+        <p class="quote__attrib"><strong>Speculative</strong> · Best AI Agent in Production</p>
+      </div>
+      <div class="quote">
+        <p class="quote__text">"One developer. Four million users."</p>
+        <p class="quote__attrib"><strong>Speculative</strong> · Best Solo Build</p>
+      </div>
+      <div class="quote">
+        <p class="quote__text">"We swung. We missed. We learned."</p>
+        <p class="quote__attrib"><strong>Speculative</strong> · The Sloppy</p>
+      </div>
+      <div class="quote">
+        <p class="quote__text">"Real software, real users, real outcomes."</p>
+        <p class="quote__attrib"><strong>Speculative</strong> · Vibie of the Year</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JUDGES -->
+<section class="section" id="judges">
+  <div class="section__inner">
+    <div class="section__head">
+      <h2 class="section__title">The <em>council</em></h2>
+      <p class="section__sub">Founders, operators, and product leaders shaping AI-native software. The full panel is being announced rolling through May and June.</p>
+    </div>
+
+    <div class="judges">
+      <div class="judge"><div class="judge__num">01</div><div class="judge__body"><div class="judge__name">Soon</div><div class="judge__title">Council member</div></div></div>
+      <div class="judge"><div class="judge__num">02</div><div class="judge__body"><div class="judge__name">Soon</div><div class="judge__title">Council member</div></div></div>
+      <div class="judge"><div class="judge__num">03</div><div class="judge__body"><div class="judge__name">Soon</div><div class="judge__title">Council member</div></div></div>
+      <div class="judge"><div class="judge__num">04</div><div class="judge__body"><div class="judge__name">Soon</div><div class="judge__title">Council member</div></div></div>
+      <div class="judge"><div class="judge__num">05</div><div class="judge__body"><div class="judge__name">Soon</div><div class="judge__title">Council member</div></div></div>
+      <div class="judge"><div class="judge__num">06</div><div class="judge__body"><div class="judge__name">Soon</div><div class="judge__title">Council member</div></div></div>
+      <div class="judge"><div class="judge__num">07</div><div class="judge__body"><div class="judge__name">Soon</div><div class="judge__title">Council member</div></div></div>
+      <div class="judge"><div class="judge__num">08</div><div class="judge__body"><div class="judge__name">Soon</div><div class="judge__title">Council member</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="section" id="timeline">
+  <div class="section__inner">
+    <div class="section__head">
+      <h2 class="section__title">The <em>schedule</em></h2>
+      <p class="section__sub">Five milestones leading to the live broadcast on September 10. All times Pacific.</p>
+    </div>
+
+    <div class="timeline-track">
+      <div class="milestone">
+        <div class="milestone__date">May <span class="num">25</span></div>
+        <h3 class="milestone__title">Submissions open</h3>
+        <p class="milestone__desc">Eight weeks of open intake. Builders, teams, and fans can submit work.</p>
+      </div>
+      <div class="milestone">
+        <div class="milestone__date">Jul <span class="num">20</span></div>
+        <h3 class="milestone__title">Submissions close</h3>
+        <p class="milestone__desc">Council convenes to begin shortlisting finalists across the six categories.</p>
+      </div>
+      <div class="milestone">
+        <div class="milestone__date">Aug <span class="num">17</span></div>
+        <h3 class="milestone__title">Finalists announced</h3>
+        <p class="milestone__desc">Three finalists per category are announced. Public voting opens on the same day.</p>
+      </div>
+      <div class="milestone">
+        <div class="milestone__date">Sep <span class="num">09</span></div>
+        <h3 class="milestone__title">Voting closes</h3>
+        <p class="milestone__desc">Final tallies locked overnight. The Council seals the envelope.</p>
+      </div>
+      <div class="milestone milestone--final">
+        <div class="milestone__date">Sep <span class="num">10</span></div>
+        <h3 class="milestone__title">The Vibies, live</h3>
+        <p class="milestone__desc">All six winners are revealed during the worldwide livestream.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPONSORS -->
+<section class="section" id="sponsors">
+  <div class="section__inner">
+    <div class="section__head">
+      <h2 class="section__title">The <em>patrons</em></h2>
+      <p class="section__sub">Presenting, category, and supporting sponsorship tiers are open for the inaugural edition.</p>
+    </div>
+
+    <div class="presenting">
+      <div class="presenting__label">
+        <span class="lab">Presenting patron</span>
+        <span class="meta">Inaugural <strong>—</strong> 2026</span>
+      </div>
+      <div class="presenting__logo">FULLSEND</div>
+    </div>
+
+    <div class="sponsor-grid">
+      <div class="sponsor-slot">Category patron</div>
+      <div class="sponsor-slot">Category patron</div>
+      <div class="sponsor-slot">Category patron</div>
+      <div class="sponsor-slot">Supporting</div>
+      <div class="sponsor-slot">Supporting</div>
+      <div class="sponsor-slot">Supporting</div>
+      <div class="sponsor-slot">Supporting</div>
+      <div class="sponsor-slot">Supporting</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="submit">
+  <div class="final-cta__inner">
+    <h2 class="final-cta__title">
+      Built something
+      <span class="accent">that mattered?</span>
+    </h2>
+    <p class="final-cta__sub">
+      The 2026 Vibies are looking for the best AI-native software of the year. Submissions open May 25, 2026.
+    </p>
+    <a href="#" class="btn btn--primary">
+      Submit your work <span class="arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-row">
+      <div class="footer-brand">The <span class="v-letter">V</span>ibies</div>
+      <div class="footer-meta">
+        <strong>Inaugural edition · 2026</strong><br/>
+        Presented by Fullsend<br/>
+        hello@thevibies.com
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 The Vibies</div>
+      <div>An awards show for AI-native software</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
